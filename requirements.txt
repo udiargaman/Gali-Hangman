@@ -1,0 +1,11 @@
+flask
+alembic
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-WTF
+itsdangerous
+Jinja2
+SQLAlchemy
+Unidecode
+Werkzeug
+WTForms
