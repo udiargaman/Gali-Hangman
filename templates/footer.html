@@ -1,5 +1,10 @@
-<footer class="footer">
-    <div class="container">
-      <span class="text-muted">למטה</span>
+<footer class="footer mt-auto py-3">
+    <div class="container text-center">
+      <ul class="list-inline">
+        <li class="list-inline-item ml-2"><a href="{{ url_for('hangman.aboutMe') }}">מי אני</a></li>
+        <li class="list-inline-item ml-2"><a href="#">על המשחק</a></li>
+        <li class="list-inline-item ml-2"><a href="#">צרו קשר</a></li>
+        <li class="list-inline-item ml-2"><a href="{{ url_for('hangman.index') }}">עמוד ראשי</a></li>
+      </ul>
     </div>
 </footer>

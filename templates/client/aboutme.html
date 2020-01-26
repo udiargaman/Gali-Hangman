@@ -1,0 +1,31 @@
+{% extends "mybase.html" %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <h1 class="gali-header"> מי אני? <img src="{{ url_for('static', filename='img/smile.png') }}" width=60 height=60></img></h1>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col">
+        <p class="gali-p">
+            שמי גלי ארגמן ואני לומדת בחטיבת הביניים אורט טבעון, בכיתה ז'1.
+            <br/>
+            הגעתי בקיץ לטבעון, לאחר שהות של שש שנים בארה"ב, בעיר שנקראת אלפרטה במדינת ג'ורג'יה. 
+        </p>
+        <br><br>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col">
+        <img src="{{ url_for('static', filename='img/img1.jpg') }}" width=320 height=240></img>
+    </div>        
+</div>
+
+{% endblock %}
+
+{% block footer %} {% include "footer.html" %} {% endblock %}
+

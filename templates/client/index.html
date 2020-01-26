@@ -1,0 +1,47 @@
+{% extends "mybase.html" %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1 class="display-4 font-weight-bold gali-header">התליין </h1>
+      <p class="lead gali-p"> ברוכים הבאים למשחק האיסלאם </p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div id="main" class="col">
+        {% include "_flashmessages.html" %}
+
+        {% from "_formhelpers.html" import render_field %}
+    
+        <form method="POST" action="submit" role="form">
+            {{ form.hidden_tag()  }}
+    
+            <div class="row justify-content-center text-right">
+                <div class="col-6"> 
+                    {{ render_field(form.user_id, class='form-control text-right', placeholder="שם משתמש") }}
+                </div>
+            </div>
+            <br>
+            <div class="row text-center justify-content-center">
+                <div class="col-3"> 
+                    <button type="submit" class="btn btn-primary bg-success btn-lg btn-huge">התחל</button>
+                </div>
+                <div class="col-3"> 
+                    <a class="btn btn-primary bg-secondary btn-lg" href="{{ url_for('hangman.leaderBoard') }}">לוח</a>
+                </div>
+                <div class="col-3"> 
+                    <a class="btn btn-primary bg-secondary btn-lg" href="{{ url_for('hangman.howtoPlay') }}">איך לשחק</a>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %} {% include "footer.html" %} {% endblock %}
+
