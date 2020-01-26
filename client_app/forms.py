@@ -5,7 +5,7 @@ from wtforms.fields.html5 import EmailField
 
 
 class LoginForm(FlaskForm):
-    user_id = StringField("שם משתמש", validators=[
+    user_id = StringField("", validators=[
             validators.InputRequired(),
             validators.Length(min=4, max=20)
         ])

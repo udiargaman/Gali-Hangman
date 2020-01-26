@@ -6,6 +6,8 @@ client_app = Blueprint("Gali's Hangman", __name__)
 # main page
 @client_app.route("/")
 def index():
-    return "Hangman"
+    form = LoginForm()
+    return render_template("index.html", form=form)
 
 # order submission
+
