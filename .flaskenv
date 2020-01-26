@@ -1,0 +1,9 @@
+FLASK_APP = "manage.py"
+FLASK_ENV = development
+SECRET_KEY = "mysecretkey"
+DB_USERNAME = hang_user
+DB_PASSWORD = hang_password
+DB_HOST = localhost
+DATABASE_NAME = ghangman
+MYSQL_ROOT_PASSWORD = udibug
+APP_NAME = "Gali's Hangman"

@@ -9,3 +9,4 @@ SQLAlchemy
 Unidecode
 Werkzeug
 WTForms
+python-dotenv

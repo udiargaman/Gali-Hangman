@@ -1,5 +1,5 @@
-# Gali-Hangman
-Galis hangman game - school project
+# Gali - Hangman Game for Middle School
 
-Lets do this
+Gali's hangman game - school project
+
 

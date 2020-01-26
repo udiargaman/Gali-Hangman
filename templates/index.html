@@ -1,0 +1,65 @@
+{% extends "mybase.html" %}
+
+{% block nav %} {% include "nav.html" %} {% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">OMX</h1>
+          <p class="lead">Order Management eXpress (simulator)</p>
+        </div>
+    </div>
+
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        <div class="card-body">
+            {% include "_flashmessages.html" %}
+      
+            <h4>New Wavelength Order</h4>
+            <h6>Submitting via NaaS</h6>
+            <br>
+        
+           {% from "_formhelpers.html" import render_field %}
+        
+            <form method="POST" action="submit" role="form">
+                {{ form.hidden_tag()  }}
+        
+                {{ render_field(form.order_id, class='form-control text-primary') }}
+
+                <div class="row">
+                    <div class="col-sm"> 
+                        {{ render_field(form.loc_a, class='form-control') }}
+                    </div>
+                    <div class="col-sm"> 
+                        {{ render_field(form.loc_z, class='form-control') }}
+                    </div>
+                </div>
+
+                {{ render_field(form.rate, class='form-control') }}
+      
+                <button type="submit" class="btn btn-primary">Submit &rarr;</button>
+
+                <br><br><br>
+                <div class="row">
+                    <div class="col-md-4 offset-md-8">
+                        {{ render_field(form.loc_z_label, class='form-control text-muted') }}
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+            About | Get Help | Contact us
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="offset-md-2 col-md-8">
+      
+
+        </div>     
+    </div>    
+          
+{% endblock %}
