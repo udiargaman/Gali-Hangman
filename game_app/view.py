@@ -13,6 +13,7 @@ game_app = Blueprint("game_app", __name__)
 @game_app.route("/game")
 def game():
     form = GameForm()
+    user = session.get("user")
 
     # if there is a prev game, use it
     if GAME_CURRENT in session:
@@ -37,9 +38,11 @@ def game():
         session[GAME_WRONG] = game.wrong_answers
         session[GAME_QLIST] = game.getQListString()
 
+    # res is true while the game lasts, false when last Q is done. Q is the question object
     res, q = game.getCurrentQuestion()
+    progress = str(game.current_question / game.game_size * 100)
       
-    return render_template("game/game.html", form=form, game=game, question=q, last_round=not res)
+    return render_template("game/game.html", user=user, form=form, game=game, question=q, progress=progress, last_round=not res, allowd_strikes=6)
 
 
 

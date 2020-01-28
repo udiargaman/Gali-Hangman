@@ -4,34 +4,99 @@
 
 <div class="row">
     <div class="col text-center">
-        <h1>main row</h1>
+        <h1>Lets Play</h1>
     </div>
 </div>
 
 <div class="row text-center">
-    <div class="col-6">
-        <h1>this is the Q</h1>
-        <p>{{ game.game_on }}</p>
-        <p>{{ game.game_size }}</p>
+    <div class="col">
 
         {% if last_round %}
-            <p>Game Over</p>
+            <p>Well done {{ user }} - you have finished the game</p>
+            <br>
+            <p>Your score is {{ game.game_size - game.wrong_answers }} / {{ game.game_size }}</p>
         {% else %}
-            <h3>{{ question.question }}</h3>
-            {% for a in question.answers %}
-                <p>{{ a }}</p>
-            {% endfor %}
+            <p>Hello {{ user }}</p>
+            
+            <h2>{{ question.question }}</h2>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                {% for answer in question.answers %}
+                    <button type="button" class="btn btn-secondary btn-gali-answer">{{ answer }}</button>
+                {% endfor %}
+            </div>
+
+            <br>
 
             {% if not last_round %}
                 <a href="{{ url_for('game_app.game', action='next', answer=2) }}">Next</a>
             {% endif %}
         {% endif %}
+
+        <br><br>
+
+        <div class="row">
+            <div class="progress col">
+                <div class="progress-bar" role="progressbar" style="width: {{ progress }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    {{ game.current_question }} / {{ game.game_size }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"><p>Wrong: {{ game.wrong_answers }} / {{ game.game_size }}</p></div>
+            <div class="col"><p>Correct: {{ game.current_question - game.wrong_answers }} / {{ game.game_size }} </p></div>
+        </div>
+
+
     </div>
 
-    <div class="col-6">
-        <h1>this is the hangman</h1>
+    <div class="col">
+        <h4>You have {{ allowd_strikes - game.wrong_answers }} wrong answers left</h4>
+        <canvas id="hangman-canvas" class="gali-canvas" width=300 height=300>
+            The browser does not support drawing a hangman picture
+        </canvas>
     </div>
 </div>
+
+<script>
+let canvas = document.getElementById("hangman-canvas");
+let ctx = canvas.getContext("2d");
+const h_x = canvas.width / 2
+const h_y = canvas.height / 2
+
+drawHangMan()
+
+function drawHangMan() {
+    drawBase()
+
+}
+
+function drawBase() {
+    const wf = 0.5
+    const hf = 0.3
+
+    ctx.moveTo(h_x * wf - 30, h_y * (2 - hf))
+    ctx.lineTo(h_x * (1 + wf), h_y * (2 - hf))
+    ctx.stroke()
+
+    ctx.moveTo(h_x * wf, h_y * (2 - hf))
+    ctx.lineTo(h_x * wf, h_y * hf)
+    ctx.stroke()
+
+    ctx.moveTo(h_x * wf, h_y * hf)
+    ctx.lineTo(h_x * 5 / 4 , h_y * hf)
+    ctx.stroke()
+
+    ctx.moveTo(h_x * wf + 20, h_y * hf)
+    ctx.lineTo(h_x * wf, h_y * hf + 30)
+    ctx.stroke()
+
+    ctx.moveTo(h_x * 5 / 4 , h_y * hf)
+    ctx.lineTo(h_x * 5 / 4 , h_y * hf + 30)
+    ctx.stroke()
+}
+
+</script>
 
 {% endblock %}
 
