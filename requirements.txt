@@ -10,3 +10,5 @@ Unidecode
 Werkzeug
 WTForms
 python-dotenv
+pandas
+xlrd

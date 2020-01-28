@@ -3,18 +3,33 @@
 {% block content %}
 
 <div class="row">
-    <div class="col">
+    <div class="col text-center">
         <h1>main row</h1>
     </div>
 </div>
 
-<div class="row">
-    <div class="col=6">
-        <h1>this is the hangman</h1>
+<div class="row text-center">
+    <div class="col-6">
+        <h1>this is the Q</h1>
+        <p>{{ game.game_on }}</p>
+        <p>{{ game.game_size }}</p>
+
+        {% if last_round %}
+            <p>Game Over</p>
+        {% else %}
+            <h3>{{ question.question }}</h3>
+            {% for a in question.answers %}
+                <p>{{ a }}</p>
+            {% endfor %}
+
+            {% if not last_round %}
+                <a href="{{ url_for('game_app.game', action='next', answer=2) }}">Next</a>
+            {% endif %}
+        {% endif %}
     </div>
 
     <div class="col-6">
-        <h1>this is the Q</h1>
+        <h1>this is the hangman</h1>
     </div>
 </div>
 

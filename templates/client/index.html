@@ -15,7 +15,7 @@
 
         {% from "_formhelpers.html" import render_field %}
     
-        <form method="POST" action="submit" role="form">
+        <form method="POST" action="{{ url_for('.index')}}" role="form">
             {{ form.hidden_tag()  }}
     
             <div class="row justify-content-center text-right">

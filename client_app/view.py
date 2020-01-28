@@ -9,10 +9,11 @@ def index():
     form = LoginForm()
 
     if form.validate_on_submit():
+        session.clear()
         user = form.user_id.data
         session["user"] = user
 
-        return redirect(url_for("/game"))
+        return redirect(url_for("game_app.game"))
 
     return render_template("client/index.html", form=form)
 
